@@ -10,11 +10,9 @@ namespace lab2.classes
     {
         public int Id { get; set; }
         public double Xreal { get; set; }
-        public double newXreal { get; set; }
         public int Xint { get; set; }
         public string Xbit { get; set; }
         public double Fx { get; set; }
-        public double newFx { get; set; }
         public double Gx { get; set; }
         public double Px { get; set; }
         public double Qx { get; set; }
@@ -25,5 +23,11 @@ namespace lab2.classes
         public string Ppk { get; set; }
         public string Zg { get; set; }
         public string Pm { get; set; }
+        public string Persent { get; set; }
+
+        public Individual Clone()
+        {
+           return (Individual) this.MemberwiseClone();
+        }
     }
 }

@@ -46,6 +46,7 @@ namespace lab2
             this.pmBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.tBox = new System.Windows.Forms.TextBox();
             this.individualBindingSource7 = new System.Windows.Forms.BindingSource(this.components);
             this.individualBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
             this.individualBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
@@ -54,17 +55,11 @@ namespace lab2
             this.individualBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.individualBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.individualBindingSource6 = new System.Windows.Forms.BindingSource(this.components);
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Xreal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Xbit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Parent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChildXbin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ppk = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Zg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.newXreal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.newFx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fx = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Persent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.TableView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource5)).BeginInit();
@@ -81,7 +76,7 @@ namespace lab2
             this.ObliczButton.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ObliczButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ObliczButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.ObliczButton.Location = new System.Drawing.Point(549, 42);
+            this.ObliczButton.Location = new System.Drawing.Point(544, 70);
             this.ObliczButton.Name = "ObliczButton";
             this.ObliczButton.Size = new System.Drawing.Size(126, 31);
             this.ObliczButton.TabIndex = 0;
@@ -176,7 +171,7 @@ namespace lab2
             // BitCountBox
             // 
             this.BitCountBox.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.BitCountBox.Location = new System.Drawing.Point(406, 76);
+            this.BitCountBox.Location = new System.Drawing.Point(544, 24);
             this.BitCountBox.Name = "BitCountBox";
             this.BitCountBox.ReadOnly = true;
             this.BitCountBox.Size = new System.Drawing.Size(60, 20);
@@ -189,7 +184,7 @@ namespace lab2
             this.label5.BackColor = System.Drawing.Color.Gainsboro;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label5.Location = new System.Drawing.Point(393, 58);
+            this.label5.Location = new System.Drawing.Point(530, 6);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 15);
             this.label5.TabIndex = 11;
@@ -202,22 +197,16 @@ namespace lab2
             this.TableView.AutoGenerateColumns = false;
             this.TableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TableView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
+            this.Column1,
             this.Xreal,
             this.Xbit,
-            this.Parent,
-            this.Pc,
-            this.ChildXbin,
-            this.Ppk,
-            this.Zg,
-            this.Pm,
-            this.newXreal,
-            this.newFx});
+            this.Fx,
+            this.Persent});
             this.TableView.DataSource = this.individualBindingSource7;
-            this.TableView.Location = new System.Drawing.Point(7, 113);
+            this.TableView.Location = new System.Drawing.Point(52, 118);
             this.TableView.Name = "TableView";
             this.TableView.ReadOnly = true;
-            this.TableView.Size = new System.Drawing.Size(1143, 386);
+            this.TableView.Size = new System.Drawing.Size(550, 315);
             this.TableView.TabIndex = 12;
             // 
             // pkBox
@@ -265,6 +254,13 @@ namespace lab2
             this.label7.TabIndex = 16;
             this.label7.Text = "prawdopodobieństwo mutacji";
             // 
+            // tBox
+            // 
+            this.tBox.Location = new System.Drawing.Point(389, 76);
+            this.tBox.Name = "tBox";
+            this.tBox.Size = new System.Drawing.Size(100, 20);
+            this.tBox.TabIndex = 17;
+            // 
             // individualBindingSource7
             // 
             this.individualBindingSource7.DataSource = typeof(lab2.classes.Individual);
@@ -297,12 +293,12 @@ namespace lab2
             // 
             this.individualBindingSource6.DataSource = typeof(lab2.classes.Individual);
             // 
-            // Id
+            // Column1
             // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
+            this.Column1.DataPropertyName = "Id";
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Xreal
             // 
@@ -318,68 +314,27 @@ namespace lab2
             this.Xbit.Name = "Xbit";
             this.Xbit.ReadOnly = true;
             // 
-            // Parent
+            // Fx
             // 
-            this.Parent.DataPropertyName = "Parent";
-            this.Parent.HeaderText = "pop. rodziców";
-            this.Parent.Name = "Parent";
-            this.Parent.ReadOnly = true;
+            this.Fx.DataPropertyName = "Fx";
+            this.Fx.HeaderText = "Fx";
+            this.Fx.Name = "Fx";
+            this.Fx.ReadOnly = true;
             // 
-            // Pc
+            // Persent
             // 
-            this.Pc.DataPropertyName = "Pc";
-            this.Pc.HeaderText = "pc";
-            this.Pc.Name = "Pc";
-            this.Pc.ReadOnly = true;
-            // 
-            // ChildXbin
-            // 
-            this.ChildXbin.DataPropertyName = "ChildXbin";
-            this.ChildXbin.HeaderText = "pop. potomstwa";
-            this.ChildXbin.Name = "ChildXbin";
-            this.ChildXbin.ReadOnly = true;
-            // 
-            // Ppk
-            // 
-            this.Ppk.DataPropertyName = "Ppk";
-            this.Ppk.HeaderText = "pop. po krzyżowaniu";
-            this.Ppk.Name = "Ppk";
-            this.Ppk.ReadOnly = true;
-            // 
-            // Zg
-            // 
-            this.Zg.DataPropertyName = "Zg";
-            this.Zg.HeaderText = "zmutowane geny";
-            this.Zg.Name = "Zg";
-            this.Zg.ReadOnly = true;
-            // 
-            // Pm
-            // 
-            this.Pm.DataPropertyName = "Pm";
-            this.Pm.HeaderText = "po mutacji";
-            this.Pm.Name = "Pm";
-            this.Pm.ReadOnly = true;
-            // 
-            // newXreal
-            // 
-            this.newXreal.DataPropertyName = "newXreal";
-            this.newXreal.HeaderText = "Xreal";
-            this.newXreal.Name = "newXreal";
-            this.newXreal.ReadOnly = true;
-            // 
-            // newFx
-            // 
-            this.newFx.DataPropertyName = "newFx";
-            this.newFx.HeaderText = "f(x)";
-            this.newFx.Name = "newFx";
-            this.newFx.ReadOnly = true;
+            this.Persent.DataPropertyName = "Persent";
+            this.Persent.HeaderText = "Persent";
+            this.Persent.Name = "Persent";
+            this.Persent.ReadOnly = true;
             // 
             // NBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1162, 518);
+            this.ClientSize = new System.Drawing.Size(785, 481);
+            this.Controls.Add(this.tBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pmBox);
@@ -439,17 +394,12 @@ namespace lab2
         private System.Windows.Forms.TextBox pmBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.TextBox tBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Xreal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Xbit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Parent;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ChildXbin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ppk;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Zg;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn newXreal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn newFx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fx;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Persent;
     }
 }
 
