@@ -109,16 +109,18 @@ namespace lab2
             {
                 i.R = generator.NextDouble();
             }
-
+            int it = 0;
             foreach (var i in individuals)
             {
+                it++;
                 foreach (var ind in individuals)
                 {
+                    
                     if (i.R <= ind.Qx)
                     {
                         Individual individual = new Individual
                         {
-                            Id = ind.Id,
+                            Id = it,
                             Xreal = ind.Xreal,
                             Xint = ind.Xint,
                             Xbit = ind.Xbit,
@@ -254,6 +256,27 @@ namespace lab2
         }
 
         private void BitCountBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pkBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void pmBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
         {
 
         }

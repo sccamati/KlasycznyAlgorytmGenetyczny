@@ -81,18 +81,18 @@ namespace lab2
             this.ObliczButton.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ObliczButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ObliczButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.ObliczButton.Location = new System.Drawing.Point(526, 42);
+            this.ObliczButton.Location = new System.Drawing.Point(549, 42);
             this.ObliczButton.Name = "ObliczButton";
-            this.ObliczButton.Size = new System.Drawing.Size(75, 23);
+            this.ObliczButton.Size = new System.Drawing.Size(126, 31);
             this.ObliczButton.TabIndex = 0;
-            this.ObliczButton.Text = "Oblicz";
+            this.ObliczButton.Text = "Generuj";
             this.ObliczButton.UseVisualStyleBackColor = false;
             this.ObliczButton.Click += new System.EventHandler(this.ObliczButton_Click);
             // 
             // ABox
             // 
             this.ABox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ABox.Location = new System.Drawing.Point(162, 41);
+            this.ABox.Location = new System.Drawing.Point(52, 23);
             this.ABox.Name = "ABox";
             this.ABox.Size = new System.Drawing.Size(21, 20);
             this.ABox.TabIndex = 1;
@@ -102,7 +102,7 @@ namespace lab2
             // BBox
             // 
             this.BBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BBox.Location = new System.Drawing.Point(189, 41);
+            this.BBox.Location = new System.Drawing.Point(79, 23);
             this.BBox.Name = "BBox";
             this.BBox.Size = new System.Drawing.Size(24, 20);
             this.BBox.TabIndex = 2;
@@ -112,7 +112,7 @@ namespace lab2
             // CountBox
             // 
             this.CountBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.CountBox.Location = new System.Drawing.Point(267, 42);
+            this.CountBox.Location = new System.Drawing.Point(35, 76);
             this.CountBox.Name = "CountBox";
             this.CountBox.Size = new System.Drawing.Size(100, 20);
             this.CountBox.TabIndex = 3;
@@ -123,7 +123,7 @@ namespace lab2
             // 
             this.DBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.DBox.ForeColor = System.Drawing.Color.Black;
-            this.DBox.Location = new System.Drawing.Point(404, 42);
+            this.DBox.Location = new System.Drawing.Point(166, 24);
             this.DBox.Name = "DBox";
             this.DBox.Size = new System.Drawing.Size(100, 20);
             this.DBox.TabIndex = 4;
@@ -134,7 +134,7 @@ namespace lab2
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.Location = new System.Drawing.Point(141, 37);
+            this.label1.Location = new System.Drawing.Point(31, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 24);
             this.label1.TabIndex = 5;
@@ -144,7 +144,7 @@ namespace lab2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(219, 38);
+            this.label2.Location = new System.Drawing.Point(109, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(15, 24);
             this.label2.TabIndex = 6;
@@ -155,7 +155,7 @@ namespace lab2
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(258, 24);
+            this.label3.Location = new System.Drawing.Point(32, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 15);
             this.label3.TabIndex = 7;
@@ -167,7 +167,7 @@ namespace lab2
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label4.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label4.Location = new System.Drawing.Point(412, 24);
+            this.label4.Location = new System.Drawing.Point(175, 6);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 15);
             this.label4.TabIndex = 8;
@@ -176,7 +176,7 @@ namespace lab2
             // BitCountBox
             // 
             this.BitCountBox.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.BitCountBox.Location = new System.Drawing.Point(691, 45);
+            this.BitCountBox.Location = new System.Drawing.Point(406, 76);
             this.BitCountBox.Name = "BitCountBox";
             this.BitCountBox.ReadOnly = true;
             this.BitCountBox.Size = new System.Drawing.Size(60, 20);
@@ -189,7 +189,7 @@ namespace lab2
             this.label5.BackColor = System.Drawing.Color.Gainsboro;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label5.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label5.Location = new System.Drawing.Point(679, 27);
+            this.label5.Location = new System.Drawing.Point(393, 58);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 15);
             this.label5.TabIndex = 11;
@@ -214,45 +214,54 @@ namespace lab2
             this.newXreal,
             this.newFx});
             this.TableView.DataSource = this.individualBindingSource7;
-            this.TableView.Location = new System.Drawing.Point(12, 113);
+            this.TableView.Location = new System.Drawing.Point(7, 113);
             this.TableView.Name = "TableView";
             this.TableView.ReadOnly = true;
-            this.TableView.Size = new System.Drawing.Size(1246, 386);
+            this.TableView.Size = new System.Drawing.Size(1143, 386);
             this.TableView.TabIndex = 12;
             // 
             // pkBox
             // 
-            this.pkBox.Location = new System.Drawing.Point(145, 87);
+            this.pkBox.Location = new System.Drawing.Point(335, 24);
             this.pkBox.Name = "pkBox";
             this.pkBox.Size = new System.Drawing.Size(100, 20);
             this.pkBox.TabIndex = 13;
+            this.pkBox.Text = "0,5";
+            this.pkBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pkBox_KeyPress);
             // 
             // pmBox
             // 
-            this.pmBox.Location = new System.Drawing.Point(311, 87);
+            this.pmBox.Location = new System.Drawing.Point(211, 76);
             this.pmBox.Name = "pmBox";
             this.pmBox.Size = new System.Drawing.Size(100, 20);
             this.pmBox.TabIndex = 14;
+            this.pmBox.Text = "0,1";
+            this.pmBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pmBox_KeyPress);
             // 
             // label6
             // 
             this.label6.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Location = new System.Drawing.Point(109, 71);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label6.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label6.Location = new System.Drawing.Point(290, 6);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(164, 13);
+            this.label6.Size = new System.Drawing.Size(218, 15);
             this.label6.TabIndex = 15;
             this.label6.Text = "prawdopodobieństwo kryżowania";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
             this.label7.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Location = new System.Drawing.Point(279, 71);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label7.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label7.Location = new System.Drawing.Point(163, 58);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(144, 13);
+            this.label7.Size = new System.Drawing.Size(194, 15);
             this.label7.TabIndex = 16;
             this.label7.Text = "prawdopodobieństwo mutacji";
             // 
@@ -312,56 +321,56 @@ namespace lab2
             // Parent
             // 
             this.Parent.DataPropertyName = "Parent";
-            this.Parent.HeaderText = "Parent";
+            this.Parent.HeaderText = "pop. rodziców";
             this.Parent.Name = "Parent";
             this.Parent.ReadOnly = true;
             // 
             // Pc
             // 
             this.Pc.DataPropertyName = "Pc";
-            this.Pc.HeaderText = "Pc";
+            this.Pc.HeaderText = "pc";
             this.Pc.Name = "Pc";
             this.Pc.ReadOnly = true;
             // 
             // ChildXbin
             // 
             this.ChildXbin.DataPropertyName = "ChildXbin";
-            this.ChildXbin.HeaderText = "ChildXbin";
+            this.ChildXbin.HeaderText = "pop. potomstwa";
             this.ChildXbin.Name = "ChildXbin";
             this.ChildXbin.ReadOnly = true;
             // 
             // Ppk
             // 
             this.Ppk.DataPropertyName = "Ppk";
-            this.Ppk.HeaderText = "Ppk";
+            this.Ppk.HeaderText = "pop. po krzyżowaniu";
             this.Ppk.Name = "Ppk";
             this.Ppk.ReadOnly = true;
             // 
             // Zg
             // 
             this.Zg.DataPropertyName = "Zg";
-            this.Zg.HeaderText = "Zg";
+            this.Zg.HeaderText = "zmutowane geny";
             this.Zg.Name = "Zg";
             this.Zg.ReadOnly = true;
             // 
             // Pm
             // 
             this.Pm.DataPropertyName = "Pm";
-            this.Pm.HeaderText = "Pm";
+            this.Pm.HeaderText = "po mutacji";
             this.Pm.Name = "Pm";
             this.Pm.ReadOnly = true;
             // 
             // newXreal
             // 
             this.newXreal.DataPropertyName = "newXreal";
-            this.newXreal.HeaderText = "newXreal";
+            this.newXreal.HeaderText = "Xreal";
             this.newXreal.Name = "newXreal";
             this.newXreal.ReadOnly = true;
             // 
             // newFx
             // 
             this.newFx.DataPropertyName = "newFx";
-            this.newFx.HeaderText = "newFx";
+            this.newFx.HeaderText = "f(x)";
             this.newFx.Name = "newFx";
             this.newFx.ReadOnly = true;
             // 
@@ -370,7 +379,7 @@ namespace lab2
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1284, 519);
+            this.ClientSize = new System.Drawing.Size(1162, 518);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pmBox);
