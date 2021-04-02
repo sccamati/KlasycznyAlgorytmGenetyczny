@@ -30,9 +30,9 @@ namespace lab2
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ObliczButton = new System.Windows.Forms.Button();
             this.ABox = new System.Windows.Forms.TextBox();
             this.BBox = new System.Windows.Forms.TextBox();
@@ -51,35 +51,36 @@ namespace lab2
             this.tBox = new System.Windows.Forms.TextBox();
             this.chartButton = new System.Windows.Forms.Button();
             this.TableView = new System.Windows.Forms.DataGridView();
-            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.wykres = new System.Windows.Forms.Panel();
-            this.zad2 = new System.Windows.Forms.Button();
-            this.zad2Panel = new System.Windows.Forms.Panel();
-            this.generateZad2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.generationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xrealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.xbitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.persentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.individualBindingSource10 = new System.Windows.Forms.BindingSource(this.components);
+            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.wykres = new System.Windows.Forms.Panel();
+            this.zad2 = new System.Windows.Forms.Button();
+            this.zad2Panel = new System.Windows.Forms.Panel();
             this.zad2Table = new System.Windows.Forms.DataGridView();
-            this.generationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.nDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fmaxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.favgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.generationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.generateZad2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.checkElite = new System.Windows.Forms.CheckBox();
+            this.generationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.TableView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.wykres.SuspendLayout();
             this.zad2Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.generationBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.zad2Table)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.generationBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.generationBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ObliczButton
@@ -122,7 +123,7 @@ namespace lab2
             this.CountBox.Name = "CountBox";
             this.CountBox.Size = new System.Drawing.Size(100, 20);
             this.CountBox.TabIndex = 3;
-            this.CountBox.Text = "10";
+            this.CountBox.Text = "65";
             this.CountBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CountBox_KeyPress);
             // 
             // DBox
@@ -207,7 +208,7 @@ namespace lab2
             this.pkBox.Name = "pkBox";
             this.pkBox.Size = new System.Drawing.Size(100, 20);
             this.pkBox.TabIndex = 13;
-            this.pkBox.Text = "0,5";
+            this.pkBox.Text = "0,7";
             this.pkBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pkBox_KeyPress);
             // 
             // pmBox
@@ -216,7 +217,7 @@ namespace lab2
             this.pmBox.Name = "pmBox";
             this.pmBox.Size = new System.Drawing.Size(100, 20);
             this.pmBox.TabIndex = 14;
-            this.pmBox.Text = "0,005";
+            this.pmBox.Text = "0,0001";
             this.pmBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pmBox_KeyPress);
             // 
             // label6
@@ -252,6 +253,7 @@ namespace lab2
             this.tBox.Name = "tBox";
             this.tBox.Size = new System.Drawing.Size(100, 20);
             this.tBox.TabIndex = 17;
+            this.tBox.Text = "140";
             // 
             // chartButton
             // 
@@ -284,75 +286,6 @@ namespace lab2
             this.TableView.ReadOnly = true;
             this.TableView.Size = new System.Drawing.Size(569, 272);
             this.TableView.TabIndex = 0;
-            // 
-            // chart
-            // 
-            chartArea2.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart.Legends.Add(legend2);
-            this.chart.Location = new System.Drawing.Point(14, 13);
-            this.chart.Name = "chart";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart.Series.Add(series2);
-            this.chart.Size = new System.Drawing.Size(1320, 590);
-            this.chart.TabIndex = 18;
-            this.chart.Text = "chart1";
-            this.chart.Click += new System.EventHandler(this.chart_Click);
-            // 
-            // wykres
-            // 
-            this.wykres.Controls.Add(this.chart);
-            this.wykres.Location = new System.Drawing.Point(12, 102);
-            this.wykres.Name = "wykres";
-            this.wykres.Size = new System.Drawing.Size(1378, 619);
-            this.wykres.TabIndex = 21;
-            // 
-            // zad2
-            // 
-            this.zad2.Location = new System.Drawing.Point(818, 24);
-            this.zad2.Name = "zad2";
-            this.zad2.Size = new System.Drawing.Size(75, 23);
-            this.zad2.TabIndex = 22;
-            this.zad2.Text = "zad2";
-            this.zad2.UseVisualStyleBackColor = true;
-            this.zad2.Click += new System.EventHandler(this.zad2_Click);
-            // 
-            // zad2Panel
-            // 
-            this.zad2Panel.Controls.Add(this.zad2Table);
-            this.zad2Panel.Controls.Add(this.generateZad2);
-            this.zad2Panel.Controls.Add(this.button1);
-            this.zad2Panel.Location = new System.Drawing.Point(4, 6);
-            this.zad2Panel.Name = "zad2Panel";
-            this.zad2Panel.Size = new System.Drawing.Size(1383, 723);
-            this.zad2Panel.TabIndex = 23;
-            // 
-            // generateZad2
-            // 
-            this.generateZad2.Location = new System.Drawing.Point(81, 34);
-            this.generateZad2.Name = "generateZad2";
-            this.generateZad2.Size = new System.Drawing.Size(75, 23);
-            this.generateZad2.TabIndex = 1;
-            this.generateZad2.Text = "Generuj";
-            this.generateZad2.UseVisualStyleBackColor = true;
-            this.generateZad2.Click += new System.EventHandler(this.generateZad2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(176, 34);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "zad1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // generationBindingSource
-            // 
-            this.generationBindingSource.DataSource = typeof(lab2.classes.Generation);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -393,6 +326,51 @@ namespace lab2
             // 
             this.individualBindingSource10.DataSource = typeof(lab2.classes.Individual);
             // 
+            // chart
+            // 
+            chartArea3.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart.Legends.Add(legend3);
+            this.chart.Location = new System.Drawing.Point(14, 13);
+            this.chart.Name = "chart";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart.Series.Add(series3);
+            this.chart.Size = new System.Drawing.Size(1320, 590);
+            this.chart.TabIndex = 18;
+            this.chart.Text = "chart1";
+            this.chart.Click += new System.EventHandler(this.chart_Click);
+            // 
+            // wykres
+            // 
+            this.wykres.Controls.Add(this.chart);
+            this.wykres.Location = new System.Drawing.Point(12, 102);
+            this.wykres.Name = "wykres";
+            this.wykres.Size = new System.Drawing.Size(1378, 619);
+            this.wykres.TabIndex = 21;
+            // 
+            // zad2
+            // 
+            this.zad2.Location = new System.Drawing.Point(818, 24);
+            this.zad2.Name = "zad2";
+            this.zad2.Size = new System.Drawing.Size(75, 23);
+            this.zad2.TabIndex = 22;
+            this.zad2.Text = "zad2";
+            this.zad2.UseVisualStyleBackColor = true;
+            this.zad2.Click += new System.EventHandler(this.zad2_Click);
+            // 
+            // zad2Panel
+            // 
+            this.zad2Panel.Controls.Add(this.zad2Table);
+            this.zad2Panel.Controls.Add(this.generateZad2);
+            this.zad2Panel.Controls.Add(this.button1);
+            this.zad2Panel.Location = new System.Drawing.Point(15, 6);
+            this.zad2Panel.Name = "zad2Panel";
+            this.zad2Panel.Size = new System.Drawing.Size(1383, 723);
+            this.zad2Panel.TabIndex = 23;
+            // 
             // zad2Table
             // 
             this.zad2Table.AllowUserToAddRows = false;
@@ -407,15 +385,11 @@ namespace lab2
             this.fmaxDataGridViewTextBoxColumn,
             this.favgDataGridViewTextBoxColumn});
             this.zad2Table.DataSource = this.generationBindingSource1;
-            this.zad2Table.Location = new System.Drawing.Point(81, 99);
+            this.zad2Table.Location = new System.Drawing.Point(67, 70);
             this.zad2Table.Name = "zad2Table";
             this.zad2Table.ReadOnly = true;
-            this.zad2Table.Size = new System.Drawing.Size(811, 498);
+            this.zad2Table.Size = new System.Drawing.Size(820, 584);
             this.zad2Table.TabIndex = 2;
-            // 
-            // generationBindingSource1
-            // 
-            this.generationBindingSource1.DataSource = typeof(lab2.classes.Generation);
             // 
             // nDataGridViewTextBoxColumn
             // 
@@ -459,12 +433,53 @@ namespace lab2
             this.favgDataGridViewTextBoxColumn.Name = "favgDataGridViewTextBoxColumn";
             this.favgDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // generationBindingSource1
+            // 
+            this.generationBindingSource1.DataSource = typeof(lab2.classes.Generation);
+            // 
+            // generateZad2
+            // 
+            this.generateZad2.Location = new System.Drawing.Point(81, 34);
+            this.generateZad2.Name = "generateZad2";
+            this.generateZad2.Size = new System.Drawing.Size(75, 23);
+            this.generateZad2.TabIndex = 1;
+            this.generateZad2.Text = "Generuj";
+            this.generateZad2.UseVisualStyleBackColor = true;
+            this.generateZad2.Click += new System.EventHandler(this.generateZad2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(176, 34);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "zad1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // checkElite
+            // 
+            this.checkElite.AutoSize = true;
+            this.checkElite.Checked = true;
+            this.checkElite.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkElite.Location = new System.Drawing.Point(919, 26);
+            this.checkElite.Name = "checkElite";
+            this.checkElite.Size = new System.Drawing.Size(45, 17);
+            this.checkElite.TabIndex = 24;
+            this.checkElite.Text = "elite";
+            this.checkElite.UseVisualStyleBackColor = true;
+            // 
+            // generationBindingSource
+            // 
+            this.generationBindingSource.DataSource = typeof(lab2.classes.Generation);
+            // 
             // NBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1402, 733);
+            this.Controls.Add(this.checkElite);
             this.Controls.Add(this.zad2Panel);
             this.Controls.Add(this.zad2);
             this.Controls.Add(this.wykres);
@@ -489,13 +504,13 @@ namespace lab2
             this.Name = "NBox";
             this.Text = "Inteligentne Systemy Agentowe";
             ((System.ComponentModel.ISupportInitialize)(this.TableView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.wykres.ResumeLayout(false);
             this.zad2Panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.generationBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.zad2Table)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.generationBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.generationBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -544,6 +559,7 @@ namespace lab2
         private System.Windows.Forms.DataGridViewTextBoxColumn fmaxDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn favgDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource generationBindingSource1;
+        private System.Windows.Forms.CheckBox checkElite;
     }
 }
 

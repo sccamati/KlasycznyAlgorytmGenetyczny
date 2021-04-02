@@ -90,8 +90,11 @@ namespace lab2
 
                 individuals.Add(individual);
             }
-
-            elite = individuals.Find(i => i.Fx == individuals.Max(ind => ind.Fx)).Clone();
+            if (checkElite.Checked)
+            {
+                elite = individuals.Find(i => i.Fx == individuals.Max(ind => ind.Fx)).Clone();
+            }
+            
 
             generationList.Add(individuals);
 
@@ -214,20 +217,24 @@ namespace lab2
                     ind.Fx = x % 1 * (Math.Cos(20 * Math.PI * x) - Math.Sin(x));
                 }
 
-                if (individualsSelect.All(ind => ind.Fx != elite.Fx))
+                if (checkElite.Checked)
                 {
-                    int randomId = generator.Next(0, individualsSelect.Count);
-                    Individual randomInd = individualsSelect[randomId];
-                    if (randomInd.Fx < elite.Fx)
+                    if (individualsSelect.All(ind => ind.Fx != elite.Fx))
                     {
-                        individualsSelect[randomId] = elite.Clone();
+                        int randomId = generator.Next(0, individualsSelect.Count);
+                        Individual randomInd = individualsSelect[randomId];
+                        if (randomInd.Fx < elite.Fx)
+                        {
+                            individualsSelect[randomId] = elite.Clone();
+                        }
+                    }
+                    double maxFx = individualsSelect.Max(ind => ind.Fx);
+                    if (maxFx > elite.Fx)
+                    {
+                        elite = individualsSelect.Find(i => i.Fx == maxFx).Clone();
                     }
                 }
-                double maxFx = individualsSelect.Max(ind => ind.Fx);
-                if (maxFx > elite.Fx)
-                {
-                    elite = individualsSelect.Find(i => i.Fx == maxFx).Clone();
-                }
+                
 
                 List<Individual> genToAdd = individualsSelect.ConvertAll(ind => ind.Clone());
                 generationList.Add(genToAdd);
@@ -435,7 +442,7 @@ namespace lab2
         };
             List<double> pmTest = new List<double>
         {
-            0.0001, 0.0005, 0.0015, 0.005, 0.002, 0.0025, 0.003, 0.0035, 0.004, 0.01
+           0.0001, 0.0005, 0.001, 0.0015, 0.002, 0.0025,  0.003, 0.0035, 0.004, 0.0045, 0.005, 0.01
         };
             List<Generation> listTest = new List<Generation>();
 
@@ -513,8 +520,11 @@ namespace lab2
                                 individuals.Add(individual);
                             }
 
-                            elite = individuals.Find(i => i.Fx == individuals.Max(ind => ind.Fx)).Clone();
-
+                            if (checkElite.Checked)
+                            {
+                                elite = individuals.Find(i => i.Fx == individuals.Max(ind => ind.Fx)).Clone();
+                            }
+                           
                             generationList.Add(individuals);
 
                             //petla do pokolen
@@ -636,20 +646,24 @@ namespace lab2
                                     ind.Fx = x % 1 * (Math.Cos(20 * Math.PI * x) - Math.Sin(x));
                                 }
 
-                                if (individualsSelect.All(ind => ind.Fx != elite.Fx))
+                                if (checkElite.Checked)
                                 {
-                                    int randomId = generator.Next(0, individualsSelect.Count);
-                                    Individual randomInd = individualsSelect[randomId];
-                                    if (randomInd.Fx < elite.Fx)
+                                    if (individualsSelect.All(ind => ind.Fx != elite.Fx))
                                     {
-                                        individualsSelect[randomId] = elite.Clone();
+                                        int randomId = generator.Next(0, individualsSelect.Count);
+                                        Individual randomInd = individualsSelect[randomId];
+                                        if (randomInd.Fx < elite.Fx)
+                                        {
+                                            individualsSelect[randomId] = elite.Clone();
+                                        }
+                                    }
+                                    double maxFx = individualsSelect.Max(ind => ind.Fx);
+                                    if (maxFx > elite.Fx)
+                                    {
+                                        elite = individualsSelect.Find(i => i.Fx == maxFx).Clone();
                                     }
                                 }
-                                double maxFx = individualsSelect.Max(ind => ind.Fx);
-                                if (maxFx > elite.Fx)
-                                {
-                                    elite = individualsSelect.Find(i => i.Fx == maxFx).Clone();
-                                }
+                               
 
                                 List<Individual> genToAdd = individualsSelect.ConvertAll(ind => ind.Clone());
                                 generationList.Add(genToAdd);
@@ -663,7 +677,7 @@ namespace lab2
                                 N = n,
                                 Pk = pk,
                                 Pm = pm,
-                                Fmax = elite.Fx
+                                Fmax = generationList.Last().Max(ind => ind.Fx)
                             };
 
                             List<double> AvgList = new List<double>();
@@ -705,6 +719,8 @@ namespace lab2
             listTest.Sort(delegate (Generation x, Generation y) {
                 return y.Favg.CompareTo(x.Favg);
             });
+
+            
             var bindingList = new BindingList<Generation>(listTest);
             var source = new BindingSource(bindingList, null);
             zad2Table.DataSource = source;
