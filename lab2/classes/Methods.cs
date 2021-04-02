@@ -11,26 +11,34 @@ namespace lab2.classes
     {
         public static void WriteToFile(List<List<Individual>> genList)
         {
-
-            List<string> lines = new List<string>();
+            StreamWriter file = new StreamWriter("Plik1.txt");
             for (int i = 0; i < genList.Count; i++)
             {
                 int lp = 0;
-                lines.Add("Pokolenie " + i + "\n");
-                lines.Add("lp | Xreal | Xbit | f(x)");
+                file.WriteLine("Pokolenie " + i + "\n");
+                file.WriteLine("lp | Xreal | Xbit | f(x)");
                 foreach (var ind in genList[i])
                 {
-                    lines.Add($"{lp}. | {Convert.ToDecimal(ind.Xreal).ToString()} | {ind.Xbit} | {ind.Fx}");
+                    file.WriteLine($"{lp}. | {ind.Xreal} | {ind.Xbit} | {ind.Fx}");
                     lp++;
                 }
-                lines.Add("\n");
+                file.WriteLine("\n");
             }
-           
-            StreamWriter file = new StreamWriter("Plik1.txt");
+            file.Close();
+        }
 
-            foreach (string line in lines)
+        public static void WriteToFileFx(List<List<Individual>> genList)
+        {
+            StreamWriter file = new StreamWriter("Plik2.txt");
+            List<string> lines = new List<string>();
+            int lp = 0;
+            for (int i = 0; i < genList.Count; i++)
             {
-                file.WriteLine(line);
+                file.WriteLine("Pokolenie " + lp + "\n");
+                file.WriteLine("lp | fmin | fave | fmax");
+                file.WriteLine($"{i}. | {genList[i].Min(ind => ind.Fx)} | {genList[i].Average(ind => ind.Fx)} | {genList[i].Max(ind => ind.Fx)}");
+                lp++;
+                file.WriteLine("\n");
             }
 
             file.Close();

@@ -30,6 +30,9 @@ namespace lab2
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ObliczButton = new System.Windows.Forms.Button();
             this.ABox = new System.Windows.Forms.TextBox();
             this.BBox = new System.Windows.Forms.TextBox();
@@ -41,34 +44,42 @@ namespace lab2
             this.label4 = new System.Windows.Forms.Label();
             this.BitCountBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.TableView = new System.Windows.Forms.DataGridView();
             this.pkBox = new System.Windows.Forms.TextBox();
             this.pmBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tBox = new System.Windows.Forms.TextBox();
-            this.individualBindingSource7 = new System.Windows.Forms.BindingSource(this.components);
-            this.individualBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
-            this.individualBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.individualBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.individualBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.individualBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.individualBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.individualBindingSource6 = new System.Windows.Forms.BindingSource(this.components);
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Xreal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Xbit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fx = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Persent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chartButton = new System.Windows.Forms.Button();
+            this.TableView = new System.Windows.Forms.DataGridView();
+            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.wykres = new System.Windows.Forms.Panel();
+            this.zad2 = new System.Windows.Forms.Button();
+            this.zad2Panel = new System.Windows.Forms.Panel();
+            this.generateZad2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.generationBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xrealDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xbitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.persentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.individualBindingSource10 = new System.Windows.Forms.BindingSource(this.components);
+            this.zad2Table = new System.Windows.Forms.DataGridView();
+            this.generationBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.nDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pmDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fmaxDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.favgDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.TableView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
+            this.wykres.SuspendLayout();
+            this.zad2Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.generationBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zad2Table)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.generationBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // ObliczButton
@@ -76,7 +87,7 @@ namespace lab2
             this.ObliczButton.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ObliczButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ObliczButton.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.ObliczButton.Location = new System.Drawing.Point(544, 70);
+            this.ObliczButton.Location = new System.Drawing.Point(653, 65);
             this.ObliczButton.Name = "ObliczButton";
             this.ObliczButton.Size = new System.Drawing.Size(126, 31);
             this.ObliczButton.TabIndex = 0;
@@ -91,7 +102,7 @@ namespace lab2
             this.ABox.Name = "ABox";
             this.ABox.Size = new System.Drawing.Size(21, 20);
             this.ABox.TabIndex = 1;
-            this.ABox.Text = "1";
+            this.ABox.Text = "-4";
             this.ABox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ABox_KeyPress);
             // 
             // BBox
@@ -101,7 +112,7 @@ namespace lab2
             this.BBox.Name = "BBox";
             this.BBox.Size = new System.Drawing.Size(24, 20);
             this.BBox.TabIndex = 2;
-            this.BBox.Text = "5";
+            this.BBox.Text = "12";
             this.BBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BBox_KeyPress);
             // 
             // CountBox
@@ -122,7 +133,7 @@ namespace lab2
             this.DBox.Name = "DBox";
             this.DBox.Size = new System.Drawing.Size(100, 20);
             this.DBox.TabIndex = 4;
-            this.DBox.Text = "10";
+            this.DBox.Text = "1000";
             this.DBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DBox_KeyPress);
             // 
             // label1
@@ -190,25 +201,6 @@ namespace lab2
             this.label5.TabIndex = 11;
             this.label5.Text = "liczba bitów";
             // 
-            // TableView
-            // 
-            this.TableView.AllowUserToAddRows = false;
-            this.TableView.AllowUserToDeleteRows = false;
-            this.TableView.AutoGenerateColumns = false;
-            this.TableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TableView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Xreal,
-            this.Xbit,
-            this.Fx,
-            this.Persent});
-            this.TableView.DataSource = this.individualBindingSource7;
-            this.TableView.Location = new System.Drawing.Point(52, 118);
-            this.TableView.Name = "TableView";
-            this.TableView.ReadOnly = true;
-            this.TableView.Size = new System.Drawing.Size(550, 315);
-            this.TableView.TabIndex = 12;
-            // 
             // pkBox
             // 
             this.pkBox.Location = new System.Drawing.Point(335, 24);
@@ -224,7 +216,7 @@ namespace lab2
             this.pmBox.Name = "pmBox";
             this.pmBox.Size = new System.Drawing.Size(100, 20);
             this.pmBox.TabIndex = 14;
-            this.pmBox.Text = "0,1";
+            this.pmBox.Text = "0,005";
             this.pmBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.pmBox_KeyPress);
             // 
             // label6
@@ -261,85 +253,228 @@ namespace lab2
             this.tBox.Size = new System.Drawing.Size(100, 20);
             this.tBox.TabIndex = 17;
             // 
-            // individualBindingSource7
+            // chartButton
             // 
-            this.individualBindingSource7.DataSource = typeof(lab2.classes.Individual);
+            this.chartButton.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.chartButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.chartButton.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.chartButton.Location = new System.Drawing.Point(653, 17);
+            this.chartButton.Name = "chartButton";
+            this.chartButton.Size = new System.Drawing.Size(126, 31);
+            this.chartButton.TabIndex = 20;
+            this.chartButton.Text = "Wykres";
+            this.chartButton.UseVisualStyleBackColor = false;
+            this.chartButton.Click += new System.EventHandler(this.chartButton_Click);
             // 
-            // individualBindingSource5
+            // TableView
             // 
-            this.individualBindingSource5.DataSource = typeof(lab2.classes.Individual);
+            this.TableView.AllowUserToAddRows = false;
+            this.TableView.AllowUserToDeleteRows = false;
+            this.TableView.AutoGenerateColumns = false;
+            this.TableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TableView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idDataGridViewTextBoxColumn,
+            this.xrealDataGridViewTextBoxColumn,
+            this.xbitDataGridViewTextBoxColumn,
+            this.fxDataGridViewTextBoxColumn,
+            this.persentDataGridViewTextBoxColumn});
+            this.TableView.DataSource = this.individualBindingSource10;
+            this.TableView.Location = new System.Drawing.Point(23, 115);
+            this.TableView.Name = "TableView";
+            this.TableView.ReadOnly = true;
+            this.TableView.Size = new System.Drawing.Size(569, 272);
+            this.TableView.TabIndex = 0;
             // 
-            // individualBindingSource4
+            // chart
             // 
-            this.individualBindingSource4.DataSource = typeof(lab2.classes.Individual);
+            chartArea2.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart.Legends.Add(legend2);
+            this.chart.Location = new System.Drawing.Point(14, 13);
+            this.chart.Name = "chart";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart.Series.Add(series2);
+            this.chart.Size = new System.Drawing.Size(1320, 590);
+            this.chart.TabIndex = 18;
+            this.chart.Text = "chart1";
+            this.chart.Click += new System.EventHandler(this.chart_Click);
             // 
-            // individualBindingSource2
+            // wykres
             // 
-            this.individualBindingSource2.DataSource = typeof(lab2.classes.Individual);
+            this.wykres.Controls.Add(this.chart);
+            this.wykres.Location = new System.Drawing.Point(12, 102);
+            this.wykres.Name = "wykres";
+            this.wykres.Size = new System.Drawing.Size(1378, 619);
+            this.wykres.TabIndex = 21;
             // 
-            // individualBindingSource
+            // zad2
             // 
-            this.individualBindingSource.DataSource = typeof(lab2.classes.Individual);
+            this.zad2.Location = new System.Drawing.Point(818, 24);
+            this.zad2.Name = "zad2";
+            this.zad2.Size = new System.Drawing.Size(75, 23);
+            this.zad2.TabIndex = 22;
+            this.zad2.Text = "zad2";
+            this.zad2.UseVisualStyleBackColor = true;
+            this.zad2.Click += new System.EventHandler(this.zad2_Click);
             // 
-            // individualBindingSource1
+            // zad2Panel
             // 
-            this.individualBindingSource1.DataSource = typeof(lab2.classes.Individual);
+            this.zad2Panel.Controls.Add(this.zad2Table);
+            this.zad2Panel.Controls.Add(this.generateZad2);
+            this.zad2Panel.Controls.Add(this.button1);
+            this.zad2Panel.Location = new System.Drawing.Point(4, 6);
+            this.zad2Panel.Name = "zad2Panel";
+            this.zad2Panel.Size = new System.Drawing.Size(1383, 723);
+            this.zad2Panel.TabIndex = 23;
             // 
-            // individualBindingSource3
+            // generateZad2
             // 
-            this.individualBindingSource3.DataSource = typeof(lab2.classes.Individual);
+            this.generateZad2.Location = new System.Drawing.Point(81, 34);
+            this.generateZad2.Name = "generateZad2";
+            this.generateZad2.Size = new System.Drawing.Size(75, 23);
+            this.generateZad2.TabIndex = 1;
+            this.generateZad2.Text = "Generuj";
+            this.generateZad2.UseVisualStyleBackColor = true;
+            this.generateZad2.Click += new System.EventHandler(this.generateZad2_Click);
             // 
-            // individualBindingSource6
+            // button1
             // 
-            this.individualBindingSource6.DataSource = typeof(lab2.classes.Individual);
+            this.button1.Location = new System.Drawing.Point(176, 34);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "zad1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Column1
+            // generationBindingSource
             // 
-            this.Column1.DataPropertyName = "Id";
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.generationBindingSource.DataSource = typeof(lab2.classes.Generation);
             // 
-            // Xreal
+            // idDataGridViewTextBoxColumn
             // 
-            this.Xreal.DataPropertyName = "Xreal";
-            this.Xreal.HeaderText = "Xreal";
-            this.Xreal.Name = "Xreal";
-            this.Xreal.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Xbit
+            // xrealDataGridViewTextBoxColumn
             // 
-            this.Xbit.DataPropertyName = "Xbit";
-            this.Xbit.HeaderText = "Xbit";
-            this.Xbit.Name = "Xbit";
-            this.Xbit.ReadOnly = true;
+            this.xrealDataGridViewTextBoxColumn.DataPropertyName = "Xreal";
+            this.xrealDataGridViewTextBoxColumn.HeaderText = "Xreal";
+            this.xrealDataGridViewTextBoxColumn.Name = "xrealDataGridViewTextBoxColumn";
+            this.xrealDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Fx
+            // xbitDataGridViewTextBoxColumn
             // 
-            this.Fx.DataPropertyName = "Fx";
-            this.Fx.HeaderText = "Fx";
-            this.Fx.Name = "Fx";
-            this.Fx.ReadOnly = true;
+            this.xbitDataGridViewTextBoxColumn.DataPropertyName = "Xbit";
+            this.xbitDataGridViewTextBoxColumn.HeaderText = "Xbit";
+            this.xbitDataGridViewTextBoxColumn.Name = "xbitDataGridViewTextBoxColumn";
+            this.xbitDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Persent
+            // fxDataGridViewTextBoxColumn
             // 
-            this.Persent.DataPropertyName = "Persent";
-            this.Persent.HeaderText = "Persent";
-            this.Persent.Name = "Persent";
-            this.Persent.ReadOnly = true;
+            this.fxDataGridViewTextBoxColumn.DataPropertyName = "Fx";
+            this.fxDataGridViewTextBoxColumn.HeaderText = "Fx";
+            this.fxDataGridViewTextBoxColumn.Name = "fxDataGridViewTextBoxColumn";
+            this.fxDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // persentDataGridViewTextBoxColumn
+            // 
+            this.persentDataGridViewTextBoxColumn.DataPropertyName = "Persent";
+            this.persentDataGridViewTextBoxColumn.HeaderText = "Persent";
+            this.persentDataGridViewTextBoxColumn.Name = "persentDataGridViewTextBoxColumn";
+            this.persentDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // individualBindingSource10
+            // 
+            this.individualBindingSource10.DataSource = typeof(lab2.classes.Individual);
+            // 
+            // zad2Table
+            // 
+            this.zad2Table.AllowUserToAddRows = false;
+            this.zad2Table.AllowUserToDeleteRows = false;
+            this.zad2Table.AutoGenerateColumns = false;
+            this.zad2Table.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.zad2Table.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nDataGridViewTextBoxColumn,
+            this.tDataGridViewTextBoxColumn,
+            this.pkDataGridViewTextBoxColumn,
+            this.pmDataGridViewTextBoxColumn,
+            this.fmaxDataGridViewTextBoxColumn,
+            this.favgDataGridViewTextBoxColumn});
+            this.zad2Table.DataSource = this.generationBindingSource1;
+            this.zad2Table.Location = new System.Drawing.Point(81, 99);
+            this.zad2Table.Name = "zad2Table";
+            this.zad2Table.ReadOnly = true;
+            this.zad2Table.Size = new System.Drawing.Size(811, 498);
+            this.zad2Table.TabIndex = 2;
+            // 
+            // generationBindingSource1
+            // 
+            this.generationBindingSource1.DataSource = typeof(lab2.classes.Generation);
+            // 
+            // nDataGridViewTextBoxColumn
+            // 
+            this.nDataGridViewTextBoxColumn.DataPropertyName = "N";
+            this.nDataGridViewTextBoxColumn.HeaderText = "N";
+            this.nDataGridViewTextBoxColumn.Name = "nDataGridViewTextBoxColumn";
+            this.nDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tDataGridViewTextBoxColumn
+            // 
+            this.tDataGridViewTextBoxColumn.DataPropertyName = "T";
+            this.tDataGridViewTextBoxColumn.HeaderText = "T";
+            this.tDataGridViewTextBoxColumn.Name = "tDataGridViewTextBoxColumn";
+            this.tDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pkDataGridViewTextBoxColumn
+            // 
+            this.pkDataGridViewTextBoxColumn.DataPropertyName = "Pk";
+            this.pkDataGridViewTextBoxColumn.HeaderText = "Pk";
+            this.pkDataGridViewTextBoxColumn.Name = "pkDataGridViewTextBoxColumn";
+            this.pkDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pmDataGridViewTextBoxColumn
+            // 
+            this.pmDataGridViewTextBoxColumn.DataPropertyName = "Pm";
+            this.pmDataGridViewTextBoxColumn.HeaderText = "Pm";
+            this.pmDataGridViewTextBoxColumn.Name = "pmDataGridViewTextBoxColumn";
+            this.pmDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fmaxDataGridViewTextBoxColumn
+            // 
+            this.fmaxDataGridViewTextBoxColumn.DataPropertyName = "Fmax";
+            this.fmaxDataGridViewTextBoxColumn.HeaderText = "Fmax";
+            this.fmaxDataGridViewTextBoxColumn.Name = "fmaxDataGridViewTextBoxColumn";
+            this.fmaxDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // favgDataGridViewTextBoxColumn
+            // 
+            this.favgDataGridViewTextBoxColumn.DataPropertyName = "Favg";
+            this.favgDataGridViewTextBoxColumn.HeaderText = "Favg";
+            this.favgDataGridViewTextBoxColumn.Name = "favgDataGridViewTextBoxColumn";
+            this.favgDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // NBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(785, 481);
+            this.ClientSize = new System.Drawing.Size(1402, 733);
+            this.Controls.Add(this.zad2Panel);
+            this.Controls.Add(this.zad2);
+            this.Controls.Add(this.wykres);
+            this.Controls.Add(this.TableView);
+            this.Controls.Add(this.chartButton);
             this.Controls.Add(this.tBox);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pmBox);
             this.Controls.Add(this.pkBox);
-            this.Controls.Add(this.TableView);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.BitCountBox);
             this.Controls.Add(this.label4);
@@ -354,14 +489,13 @@ namespace lab2
             this.Name = "NBox";
             this.Text = "Inteligentne Systemy Agentowe";
             ((System.ComponentModel.ISupportInitialize)(this.TableView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
+            this.wykres.ResumeLayout(false);
+            this.zad2Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.generationBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.individualBindingSource10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.zad2Table)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.generationBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,28 +512,38 @@ namespace lab2
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.BindingSource individualBindingSource;
-        private System.Windows.Forms.BindingSource individualBindingSource1;
-        private System.Windows.Forms.BindingSource individualBindingSource2;
-        private System.Windows.Forms.BindingSource individualBindingSource3;
-        private System.Windows.Forms.BindingSource individualBindingSource4;
         private System.Windows.Forms.TextBox BitCountBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.BindingSource individualBindingSource5;
-        private System.Windows.Forms.BindingSource individualBindingSource6;
         private System.Windows.Forms.DataGridViewTextBoxColumn xDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource individualBindingSource7;
-        private System.Windows.Forms.DataGridView TableView;
         private System.Windows.Forms.TextBox pkBox;
         private System.Windows.Forms.TextBox pmBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox tBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Xreal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Xbit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fx;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Persent;
+        private System.Windows.Forms.Button chartButton;
+        private System.Windows.Forms.DataGridView TableView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xrealDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn xbitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fxDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn persentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource individualBindingSource10;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
+        private System.Windows.Forms.Panel wykres;
+        private System.Windows.Forms.Button zad2;
+        private System.Windows.Forms.Panel zad2Panel;
+        private System.Windows.Forms.Button generateZad2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fminDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource generationBindingSource;
+        private System.Windows.Forms.DataGridView zad2Table;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pkDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pmDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fmaxDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn favgDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource generationBindingSource1;
     }
 }
 
