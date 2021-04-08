@@ -94,7 +94,7 @@ namespace lab2
             {
                 elite = individuals.Find(i => i.Fx == individuals.Max(ind => ind.Fx)).Clone();
             }
-            
+
 
             generationList.Add(individuals);
 
@@ -234,7 +234,7 @@ namespace lab2
                         elite = individualsSelect.Find(i => i.Fx == maxFx).Clone();
                     }
                 }
-                
+
 
                 List<Individual> genToAdd = individualsSelect.ConvertAll(ind => ind.Clone());
                 generationList.Add(genToAdd);
@@ -260,8 +260,8 @@ namespace lab2
             }
 
 
-            Methods.WriteToFile(generationList);
-            Methods.WriteToFileFx(generationList);
+            Methods.WriteToFile(generationList, n, t, pm, pk, precision);
+            Methods.WriteToFileFx(generationList, n, t, pm, pk, precision);
             MakeChart(generationList);
 
             var bindingList = new BindingList<Individual>(individualsToPersent);
@@ -443,6 +443,8 @@ namespace lab2
             List<List<Individual>> generationList = new List<List<Individual>>();
             List<Individual> individuals;
             List<Individual> individualsSelect;
+            List<double> avg = new List<double>();
+            Individual masterElite = null;
             List<double> pkTest = new List<double>
         {
             0.5, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90
@@ -461,14 +463,15 @@ namespace lab2
             double pk = 0.0;
             double pm = 0.0;
             int t = 0;
+            int test = 0;
             Individual elite = null;
 
 
-            
+
             a = Convert.ToDouble(ABox.Text);
             b = Convert.ToDouble(BBox.Text);
             d = Convert.ToInt32(DBox.Text);
-
+            test = Convert.ToInt32(testBox.Text);
 
             if (a > b)
             {
@@ -492,7 +495,7 @@ namespace lab2
 
             for (n = 30; n <= 80; n += 5)
             {
-                
+
                 foreach (var pmItem in pmTest)
                 {
                     pm = pmItem;
@@ -504,227 +507,253 @@ namespace lab2
                         for (t = 50; t <= 150; t += 10)
                         {
 
-                            for (int i = 0; i < n; i++)
+                            for (int s = 0; s < test; s++)
                             {
 
-                                Individual individual = new Individual
+                                for (int i = 0; i < n; i++)
                                 {
-                                    Id = i,
-                                    Xreal = generator.Next((int)(a * d), (int)(b * d)) / d
-                                };
-
-                                individual.Xint = (int)Math.Round(((1 / (b - a)) * (individual.Xreal - a) * (Math.Pow(2, l) - 1)));
-
-                                string bin = Convert.ToString(individual.Xint, 2);
-                                for (int k = bin.Length; k < l; k++)
-                                {
-                                    bin = "0" + bin;
-                                }
-                                individual.Xbit = bin;
-                                double x = individual.Xreal;
-                                individual.Fx = x % 1 * (Math.Cos(20 * Math.PI * x) - Math.Sin(x));
-
-                                individuals.Add(individual);
-                            }
-
-                            if (checkElite.Checked)
-                            {
-                                elite = individuals.Find(i => i.Fx == individuals.Max(ind => ind.Fx)).Clone();
-                            }
-                           
-                            generationList.Add(individuals);
-
-                            //petla do pokolen
-                            for (int j = 0; j < t; j++)
-                            {
-
-                                var fmin = individuals.Min(i => i.Fx);
-
-                                foreach (var i in individuals)
-                                {
-                                    i.Gx = i.Fx - fmin + precision;
-                                }
-
-                                var SumGx = individuals.Sum(i => i.Gx);
-
-                                foreach (var i in individuals)
-                                {
-                                    i.Px = i.Gx / SumGx;
-                                }
-
-
-                                int index = 0;
-                                foreach (var ind in individuals)
-                                {
-                                    for (int i = 0; i <= index; i++)
+                                    Individual individual = new Individual
                                     {
-                                        ind.Qx += individuals[i].Px;
-                                    }
-                                    index++;
-                                    ind.R = generator.NextDouble();
-                                }
+                                        Id = i,
+                                        Xreal = generator.Next((int)(a * d), (int)(b * d)) / d
+                                    };
 
+                                    individual.Xint = (int)Math.Round(((1 / (b - a)) * (individual.Xreal - a) * (Math.Pow(2, l) - 1)));
 
-
-
-                                int it = 0;
-                                foreach (var i in individuals)
-                                {
-                                    it++;
-                                    foreach (var ind in individuals)
+                                    string bin = Convert.ToString(individual.Xint, 2);
+                                    for (int k = bin.Length; k < l; k++)
                                     {
-
-                                        if (i.R <= ind.Qx)
-                                        {
-                                            individualsSelect.Add(ind.Clone());
-                                            break;
-                                        }
+                                        bin = "0" + bin;
                                     }
-                                }
+                                    individual.Xbit = bin;
+                                    double x = individual.Xreal;
+                                    individual.Fx = x % 1 * (Math.Cos(20 * Math.PI * x) - Math.Sin(x));
 
-                                foreach (var i in individualsSelect)
-                                {
-                                    if (generator.NextDouble() <= pk)
-                                    {
-                                        i.Parent = i.Xbit;
-                                    }
-                                    else
-                                    {
-                                        i.Parent = "--";
-                                        i.Ppk = i.Xbit;
-                                    }
-                                }
-
-
-                                List<Individual> parents = new List<Individual>();
-
-                                foreach (var i in individualsSelect)
-                                {
-                                    if (!i.Parent.Equals("--"))
-                                    {
-                                        parents.Add(i);
-                                    }
-
-                                }
-
-                                if (parents.Count > 1)
-                                {
-                                    for (int i = 0; i < parents.Count - 1; i = i + 2)
-                                    {
-                                        int pc = parents[i].Pc = parents[i + 1].Pc = generator.Next(1, l);
-                                        parents[i].Ppk = parents[i].ChildXbin = parents[i].Parent.Substring(0, pc) + parents[i + 1].Parent.Substring(pc, l - pc);
-                                        parents[i + 1].Ppk = parents[i + 1].ChildXbin = parents[i + 1].Parent.Substring(0, pc) + parents[i].Parent.Substring(pc, l - pc);
-                                    }
-                                    if (parents.Count % 2 != 0)
-                                    {
-                                        int pc = parents[parents.Count - 1].Pc = generator.Next(1, l);
-                                        parents[parents.Count - 1].Ppk = parents[parents.Count - 1].ChildXbin = String.Concat(parents[parents.Count - 1].Parent.Substring(0, pc) + parents[0].Parent.Substring(pc, l - pc));
-                                    }
-                                }
-                                else
-                                {
-                                    foreach (var i in parents)
-                                    {
-                                        i.Ppk = i.Parent;
-                                    }
-
-                                }
-
-                                StringBuilder strBuilder = new StringBuilder();
-                                foreach (var ind in individualsSelect)
-                                {
-
-                                    ind.Pm = ind.Ppk;
-                                    strBuilder = new StringBuilder(ind.Pm); ;
-                                    for (int i = 0; i < ind.Pm.Length; i++)
-                                    {
-                                        if (generator.NextDouble() <= pm)
-                                        {
-                                            strBuilder[i] = strBuilder[i].Equals('0') ? '1' : '0';
-                                            ind.Zg += i + 1 + ",";
-                                        }
-
-                                    }
-                                    ind.Pm = strBuilder.ToString();
-                                    ind.Xbit = ind.Pm;
-                                    ind.Xint = int.Parse(Convert.ToString(Convert.ToInt32(ind.Pm + "", 2), 10));
-                                    ind.Xreal = Math.Round(a + ((b - a) * ind.Xint) / (Math.Pow(2, l) - 1), round);
-                                    double x = ind.Xreal;
-                                    ind.Fx = x % 1 * (Math.Cos(20 * Math.PI * x) - Math.Sin(x));
+                                    individuals.Add(individual);
                                 }
 
                                 if (checkElite.Checked)
                                 {
-                                    if (individualsSelect.All(ind => ind.Fx != elite.Fx))
+                                    elite = individuals.Find(i => i.Fx == individuals.Max(ind => ind.Fx)).Clone();
+                                }
+
+                                generationList.Add(individuals);
+
+                                //petla do pokolen
+                                for (int j = 0; j < t; j++)
+                                {
+
+                                    var fmin = individuals.Min(i => i.Fx);
+
+                                    foreach (var i in individuals)
                                     {
-                                        int randomId = generator.Next(0, individualsSelect.Count);
-                                        Individual randomInd = individualsSelect[randomId];
-                                        if (randomInd.Fx < elite.Fx)
+                                        i.Gx = i.Fx - fmin + precision;
+                                    }
+
+                                    var SumGx = individuals.Sum(i => i.Gx);
+
+                                    foreach (var i in individuals)
+                                    {
+                                        i.Px = i.Gx / SumGx;
+                                    }
+
+
+                                    int index = 0;
+                                    foreach (var ind in individuals)
+                                    {
+                                        for (int i = 0; i <= index; i++)
                                         {
-                                            individualsSelect[randomId] = elite.Clone();
+                                            ind.Qx += individuals[i].Px;
+                                        }
+                                        index++;
+                                        ind.R = generator.NextDouble();
+                                    }
+
+
+
+
+                                    int it = 0;
+                                    foreach (var i in individuals)
+                                    {
+                                        it++;
+                                        foreach (var ind in individuals)
+                                        {
+
+                                            if (i.R <= ind.Qx)
+                                            {
+                                                individualsSelect.Add(ind.Clone());
+                                                break;
+                                            }
                                         }
                                     }
-                                    double maxFx = individualsSelect.Max(ind => ind.Fx);
-                                    if (maxFx > elite.Fx)
+
+                                    foreach (var i in individualsSelect)
                                     {
-                                        elite = individualsSelect.Find(i => i.Fx == maxFx).Clone();
+                                        if (generator.NextDouble() <= pk)
+                                        {
+                                            i.Parent = i.Xbit;
+                                        }
+                                        else
+                                        {
+                                            i.Parent = "--";
+                                            i.Ppk = i.Xbit;
+                                        }
                                     }
+
+
+                                    List<Individual> parents = new List<Individual>();
+
+                                    foreach (var i in individualsSelect)
+                                    {
+                                        if (!i.Parent.Equals("--"))
+                                        {
+                                            parents.Add(i);
+                                        }
+
+                                    }
+
+                                    if (parents.Count > 1)
+                                    {
+                                        for (int i = 0; i < parents.Count - 1; i = i + 2)
+                                        {
+                                            int pc = parents[i].Pc = parents[i + 1].Pc = generator.Next(1, l);
+                                            parents[i].Ppk = parents[i].ChildXbin = parents[i].Parent.Substring(0, pc) + parents[i + 1].Parent.Substring(pc, l - pc);
+                                            parents[i + 1].Ppk = parents[i + 1].ChildXbin = parents[i + 1].Parent.Substring(0, pc) + parents[i].Parent.Substring(pc, l - pc);
+                                        }
+                                        if (parents.Count % 2 != 0)
+                                        {
+                                            int pc = parents[parents.Count - 1].Pc = generator.Next(1, l);
+                                            parents[parents.Count - 1].Ppk = parents[parents.Count - 1].ChildXbin = String.Concat(parents[parents.Count - 1].Parent.Substring(0, pc) + parents[0].Parent.Substring(pc, l - pc));
+                                        }
+                                    }
+                                    else
+                                    {
+                                        foreach (var i in parents)
+                                        {
+                                            i.Ppk = i.Parent;
+                                        }
+
+                                    }
+
+                                    StringBuilder strBuilder = new StringBuilder();
+                                    foreach (var ind in individualsSelect)
+                                    {
+
+                                        ind.Pm = ind.Ppk;
+                                        strBuilder = new StringBuilder(ind.Pm); ;
+                                        for (int i = 0; i < ind.Pm.Length; i++)
+                                        {
+                                            if (generator.NextDouble() <= pm)
+                                            {
+                                                strBuilder[i] = strBuilder[i].Equals('0') ? '1' : '0';
+                                                ind.Zg += i + 1 + ",";
+                                            }
+
+                                        }
+                                        ind.Pm = strBuilder.ToString();
+                                        ind.Xbit = ind.Pm;
+                                        ind.Xint = int.Parse(Convert.ToString(Convert.ToInt32(ind.Pm + "", 2), 10));
+                                        ind.Xreal = Math.Round(a + ((b - a) * ind.Xint) / (Math.Pow(2, l) - 1), round);
+                                        double x = ind.Xreal;
+                                        ind.Fx = x % 1 * (Math.Cos(20 * Math.PI * x) - Math.Sin(x));
+                                    }
+
+                                    if (checkElite.Checked)
+                                    {
+                                        if (individualsSelect.All(ind => ind.Fx != elite.Fx))
+                                        {
+                                            int randomId = generator.Next(0, individualsSelect.Count);
+                                            Individual randomInd = individualsSelect[randomId];
+                                            if (randomInd.Fx < elite.Fx)
+                                            {
+                                                individualsSelect[randomId] = elite.Clone();
+                                            }
+                                        }
+                                        double maxFx = individualsSelect.Max(ind => ind.Fx);
+                                        if (maxFx > elite.Fx)
+                                        {
+                                            elite = individualsSelect.Find(i => i.Fx == maxFx).Clone();
+                                        }
+                                    }
+
+
+                                    List<Individual> genToAdd = individualsSelect.ConvertAll(ind => ind.Clone());
+                                    generationList.Add(genToAdd);
+                                    individuals = individualsSelect.ConvertAll(ind => ind.Clone());
+                                    individualsSelect.Clear();
                                 }
-                               
 
-                                List<Individual> genToAdd = individualsSelect.ConvertAll(ind => ind.Clone());
-                                generationList.Add(genToAdd);
-                                individuals = individualsSelect.ConvertAll(ind => ind.Clone());
+
+                                if(masterElite == null)
+                                {
+                                    masterElite = elite;
+                                }
+                                else if(elite.Fx > masterElite.Fx)
+                                {
+                                    masterElite = elite;
+                                }
+                                avg.Add(generationList.Last().Average(ind => ind.Fx));
+                                
+                                generationList.Clear();
+                                individuals.Clear();
                                 individualsSelect.Clear();
-                            }
 
+
+                            }
                             Generation gen = new Generation
                             {
                                 T = t,
                                 N = n,
                                 Pk = pk,
                                 Pm = pm,
-                                Fmax = generationList.Last().Max(ind => ind.Fx)
+                                Fmax = masterElite.Fx,
+                                Favg = avg.Average(av => av)
                             };
 
-                            gen.Favg = generationList.Last().Average(ind => ind.Fx);
-                            
-
+                            avg.Clear();
                             listTest.Add(gen);
-                            generationList.Clear();
-                            individuals.Clear();
-                            individualsSelect.Clear();
-
                         }
                     }
                 }
             }
-            listTest.Sort(delegate (Generation x, Generation y) {
+            listTest.Sort(delegate (Generation x, Generation y)
+            {
                 return y.Pk.CompareTo(x.Pk);
             });
-            listTest.Sort(delegate (Generation x, Generation y) {
+            listTest.Sort(delegate (Generation x, Generation y)
+            {
                 return y.Pm.CompareTo(x.Pm);
             });
-            listTest.Sort(delegate (Generation x, Generation y) {
+            listTest.Sort(delegate (Generation x, Generation y)
+            {
                 return y.T.CompareTo(x.T);
             });
-            listTest.Sort(delegate (Generation x, Generation y) {
+            listTest.Sort(delegate (Generation x, Generation y)
+            {
                 return y.N.CompareTo(x.N);
             });
-            listTest.Sort(delegate (Generation x, Generation y) {
+            listTest.Sort(delegate (Generation x, Generation y)
+            {
                 return y.N.CompareTo(x.N);
             });
-            listTest.Sort(delegate (Generation x, Generation y) {
+            listTest.Sort(delegate (Generation x, Generation y)
+            {
                 return y.Fmax.CompareTo(x.Fmax);
             });
-            listTest.Sort(delegate (Generation x, Generation y) {
+            listTest.Sort(delegate (Generation x, Generation y)
+            {
                 return y.Favg.CompareTo(x.Favg);
             });
 
-            
+
             var bindingList = new BindingList<Generation>(listTest);
             var source = new BindingSource(bindingList, null);
             zad2Table.DataSource = source;
+
+        }
+
+        private void zad2Panel_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
