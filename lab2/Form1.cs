@@ -297,9 +297,13 @@ namespace lab2
             {
                 chartMaker.AxisX.Interval = 10;
             }
-            else if (genList.Count < 100)
+            else if (genList.Count > 99)
             {
-                chartMaker.AxisX.Interval = 1;
+                chartMaker.AxisX.Interval = 4;
+            }
+            else if (genList.Count > 40)
+            {
+                chartMaker.AxisX.Interval = 2;
             }
 
             chart.Series[0].IsVisibleInLegend = false;
@@ -319,10 +323,13 @@ namespace lab2
 
             chart.Series["fmax"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart.Series["fmax"].Color = Color.Green;
+            chart.Series["fmax"].BorderWidth = 2;
             chart.Series["fave"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart.Series["fave"].Color = Color.Red;
+            chart.Series["fave"].BorderWidth = 2;
             chart.Series["fmin"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             chart.Series["fmin"].Color = Color.Blue;
+            chart.Series["fmin"].BorderWidth = 2;
 
 
             for (int i = 0; i < genList.Count; i++)
@@ -680,13 +687,7 @@ namespace lab2
                                 Fmax = generationList.Last().Max(ind => ind.Fx)
                             };
 
-                            List<double> AvgList = new List<double>();
-                            foreach (var genList in generationList)
-                            {
-                                AvgList.Add(genList.Average(ind => ind.Fx));
-                            }
-
-                            gen.Favg = AvgList.Average(avg => avg);
+                            gen.Favg = generationList.Last().Average(ind => ind.Fx);
                             
 
                             listTest.Add(gen);
